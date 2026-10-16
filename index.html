@@ -184,7 +184,7 @@
       <div class="flex flex-wrap items-center justify-between gap-4 bg-brand-900 border border-slate-800 rounded-xl p-4">
         <div>
           <span class="text-xs font-mono text-brand-400 block">EXECUTIVE DIAGNOSTIC DOSSIER</span>
-          <h2 class="text-lg font-bold text-white">キャリア・組織アライメント監査レポート</h2>
+          <h2 class="text-lg font-bold text-white">キャリア・組織アライメントレポート</h2>
         </div>
         <div class="flex gap-2">
           <button onclick="restartAssessment()" class="px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 transition">
@@ -435,10 +435,10 @@
         title: "Q4. 階層・ポジション（期待された権限）",
         desc: "自身に与えられると想定していた裁量権限と、現場での実際の立ち位置を選択してください。",
         options: [
-          { id: "junior", name: "若手・メンバー層", sub: "新卒・第2新卒、定常タスク実行、指示待ち扱い", scores: [2, 3, 2, 3, 3] },
-          { id: "senior", name: "中堅・主力プレイヤー層", sub: "一人前、現場エース、実務の中核、孤軍奮闘", scores: [3, 3, 3, 2, 2] },
-          { id: "lead", name: "プレイング管理職層", sub: "主任、係長、課長、リーダー、板挟みポジション", scores: [3, 2, 3, 2, 2] },
-          { id: "head", name: "部門統括・シニアマネジメント", sub: "部長、本部長、事業部長、全社方針の執行官", scores: [4, 3, 3, 3, 3] },
+          { id: "junior", name: "若手・メンバー層", sub: "新卒・第2新卒、定常タスク実行", scores: [2, 3, 2, 3, 3] },
+          { id: "senior", name: "中堅・主力プレイヤー層", sub: "一人前、現場エース、実務の中核", scores: [3, 3, 3, 2, 2] },
+          { id: "lead", name: "プレイング管理職層", sub: "主任、係長、課長、リーダー", scores: [3, 2, 3, 2, 2] },
+          { id: "head", name: "部門統括・シニアマネジメント", sub: "部長、本部長、事業部長", scores: [4, 3, 3, 3, 3] },
           { id: "cxo", name: "経営・役員層", sub: "取締役、CxO、執行役員、創業者側近", scores: [5, 4, 4, 2, 2] }
         ]
       },
@@ -447,7 +447,7 @@
         title: "Q5. 雇用形態・立ち位置（情報の受容度）",
         desc: "入社前に想定していた社内での立ち位置と、実態として扱われた立場を選択してください。",
         options: [
-          { id: "proper", name: "生え抜き正社員（プロパー）", sub: "新卒入社、初期創業メンバー、社内中枢", scores: [3, 2, 3, 4, 4] },
+          { id: "proper", name: "正社員（プロパー）", sub: "新卒入社、初期創業メンバー、社内中枢", scores: [3, 2, 3, 4, 4] },
           { id: "mid_career", name: "中途正社員（キャリア採用）", sub: "即戦力採用、外様、成果要求の先鋭化", scores: [4, 3, 3, 2, 2] },
           { id: "contract", name: "有期雇用・業務委託", sub: "契約社員、常駐フリーランス、嘱託", scores: [3, 3, 2, 1, 2] },
           { id: "indirect", name: "間接雇用・非正規", sub: "派遣社員、パート・アルバイト、下請け出向", scores: [1, 2, 1, 1, 1] }
@@ -584,7 +584,7 @@
       nextBtn.disabled = !isComplete;
       
       if (currentStep === 5) {
-        nextBtn.innerText = '監査レポートを生成する →';
+        nextBtn.innerText = 'レポートを生成する →';
       } else {
         nextBtn.innerText = '次の軸へ進む →';
       }
