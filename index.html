@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Career-Organization Alignment Analyzer | 組織適合度・認知ギャップ分析エンジン</title>
+  <title>Career Synergy & Alignment Analyzer | 組織適合・ポテンシャル最大化エンジン</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
@@ -23,10 +23,11 @@
               100: '#dbeafe',
               50: '#eff6ff',
             },
-            amber: {
-              400: '#fbbf24',
-              500: '#f59e0b',
-              600: '#d97706',
+            synergy: {
+              300: '#6ee7b7',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
             }
           }
         }
@@ -62,19 +63,19 @@
     <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center font-mono font-bold text-white text-sm shadow-md shadow-brand-600/30">
-          PD
+          CA
         </div>
         <div>
           <h1 class="text-sm font-bold text-white tracking-tight flex items-center gap-2">
-            Career Alignment Gap Analyzer
-            <span class="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-brand-800 text-brand-400 border border-brand-700/50">v2.5 Professional</span>
+            Career Synergy & Alignment Analyzer
+            <span class="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-brand-800 text-brand-400 border border-brand-700/50">v3.1 Synergy Pro</span>
           </h1>
-          <p class="text-[11px] text-slate-400">組織構造と個人の志向における認識ギャップ分析・デューデリジェンス設計</p>
+          <p class="text-[11px] text-slate-400">組織特性と個人の持ち味を調和させ、活躍ポテンシャルを最大化するアライメント分析</p>
         </div>
       </div>
       <div class="text-right hidden sm:block">
         <span class="text-[10px] font-mono text-slate-400 block">METHODOLOGY</span>
-        <span class="text-xs text-brand-300 font-medium">5-Axis Dual Perspective Framework</span>
+        <span class="text-xs text-brand-300 font-medium">5-Axis Dual Synergy Framework</span>
       </div>
     </div>
   </header>
@@ -83,18 +84,21 @@
   <div class="bg-brand-850 border-b border-slate-800/80 py-2 px-4">
     <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-between gap-2 text-xs">
       <div class="flex items-center gap-2 text-slate-400 font-mono text-[11px]">
-        <svg class="w-3.5 h-3.5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <svg class="w-3.5 h-3.5 text-synergy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
         <span>ポートフォリオ閲覧用デモシナリオ:</span>
       </div>
       <div class="flex flex-wrap gap-2">
+        <button onclick="loadScenario('ideal')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-synergy-300 hover:text-white border border-synergy-500/50 transition text-[11px]">
+          ① ベストシナジー（完全一致モデル）
+        </button>
         <button onclick="loadScenario('saas')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition text-[11px]">
-          ① SaaSベンチャーでの速度乖離
+          ② スタートアップ成長期でのスピード適応
         </button>
         <button onclick="loadScenario('jtc')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition text-[11px]">
-          ② JTCでの裁量権限ギャップ
+          ③ 大手エンタープライズでの合意形成型活躍
         </button>
         <button onclick="loadScenario('ses')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition text-[11px]">
-          ③ 客先常駐での役割期待乖離
+          ④ パートナー協働型での役割価値共創
         </button>
       </div>
     </div>
@@ -123,7 +127,7 @@
         <div class="mb-6">
           <h2 id="dimension-title" class="text-xl font-bold text-white mb-1">Q1. 組織体・ガバナンス形態</h2>
           <p id="dimension-desc" class="text-xs text-slate-400">
-            入社前に想定・期待していた組織形態（Plan）と、入社後に直面した実態（Reality）を選択してください。
+            自身が最も力を発揮しやすい理想的な環境（Plan）と、実際の現場における組織スタイル（Reality）を選択してください。
           </p>
         </div>
 
@@ -135,7 +139,7 @@
             <div class="flex items-center justify-between pb-2 border-b border-slate-800">
               <span class="text-xs font-bold font-mono text-brand-400 flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-full bg-brand-400"></span>
-                STEP A: 入社前の想定・期待 (Plan)
+                STEP A: 力を発揮しやすい理想モデル (Plan)
               </span>
               <span id="plan-selected-badge" class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">未選択</span>
             </div>
@@ -147,9 +151,9 @@
           <!-- Section B: Reality -->
           <div class="space-y-3 bg-brand-950/60 p-4 rounded-lg border border-brand-900/80">
             <div class="flex items-center justify-between pb-2 border-b border-slate-800">
-              <span class="text-xs font-bold font-mono text-amber-400 flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                STEP B: 入社後の現場実態 (Reality)
+              <span class="text-xs font-bold font-mono text-synergy-300 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-synergy-400"></span>
+                STEP B: 実際の現場組織スタイル (Reality)
               </span>
               <span id="reality-selected-badge" class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">未選択</span>
             </div>
@@ -183,8 +187,8 @@
       <!-- Top Action bar -->
       <div class="flex flex-wrap items-center justify-between gap-4 bg-brand-900 border border-slate-800 rounded-xl p-4">
         <div>
-          <span class="text-xs font-mono text-brand-400 block">EXECUTIVE DIAGNOSTIC DOSSIER</span>
-          <h2 class="text-lg font-bold text-white">キャリア・組織アライメントレポート</h2>
+          <span class="text-xs font-mono text-synergy-300 block">CAREER SYNERGY INSIGHTS</span>
+          <h2 class="text-lg font-bold text-white">組織適合・ポテンシャル分析レポート</h2>
         </div>
         <div class="flex gap-2">
           <button onclick="restartAssessment()" class="px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 transition">
@@ -202,24 +206,24 @@
           
           <div class="space-y-2 md:col-span-2">
             <div class="flex items-center gap-2">
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-brand-800 text-brand-300 border border-brand-700">AUDIT REPORT</span>
-              <span class="text-xs text-slate-400 font-mono" id="audit-id">ID: ALIGN-2026-X8</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-brand-800 text-synergy-300 border border-brand-700">POTENTIAL REPORT</span>
+              <span class="text-xs text-slate-400 font-mono" id="audit-id">ID: ALIGN-2026-PRO</span>
             </div>
             <h3 class="text-xl font-bold text-white" id="summary-headline">
-              意思決定権限と商流コントロールにおける構造的ギャップ
+              組織構造とワークスタイルの親和性分析
             </h3>
             <p class="text-xs text-slate-300 leading-relaxed" id="summary-lead">
-              入社前に仮説立てした「自律推進型モデル」と、組織固有の「多層的合意形成モデル」との間にパラメータの大きな乖離が確認されました。
+              自身が強みを発揮しやすい理想条件と、現場の組織スタイルにおける親和性を分析しました。
             </p>
           </div>
 
           <div class="bg-brand-950 p-4 rounded-lg border border-slate-800 text-center flex flex-col justify-center">
-            <span class="text-[11px] text-slate-400 font-mono">TOTAL ALIGNMENT INDEX</span>
-            <div class="text-3xl font-extrabold font-mono text-brand-400 my-1" id="alignment-score">
-              42<span class="text-sm text-slate-500 font-normal">%</span>
+            <span class="text-[11px] text-slate-400 font-mono">CAREER SYNERGY INDEX</span>
+            <div class="text-3xl font-extrabold font-mono text-synergy-300 my-1" id="alignment-score">
+              --<span class="text-sm text-slate-500 font-normal">%</span>
             </div>
-            <span class="text-[10px] text-amber-400 font-medium" id="alignment-level">
-              要デューデリジェンス強化領域
+            <span class="text-[10px] font-medium" id="alignment-level">
+              --
             </span>
           </div>
 
@@ -235,19 +239,19 @@
             <div class="flex items-center justify-between mb-4">
               <h4 class="text-xs font-bold font-mono text-slate-300 flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-brand-400"></span>
-                5-AXIS COGNITIVE GAP CHART
+                5-AXIS SYNERGY RADAR
               </h4>
               <div class="flex items-center gap-3 text-[10px] font-mono">
                 <span class="text-brand-400 flex items-center gap-1">
-                  <span class="w-2 h-0.5 bg-brand-400 inline-block"></span> 想定 (Plan)
+                  <span class="w-2 h-0.5 bg-brand-400 inline-block"></span> 理想 (Plan)
                 </span>
-                <span class="text-amber-400 flex items-center gap-1">
-                  <span class="w-2 h-0.5 bg-amber-400 inline-block"></span> 実態 (Reality)
+                <span class="text-synergy-300 flex items-center gap-1">
+                  <span class="w-2 h-0.5 bg-synergy-400 inline-block"></span> 実態 (Reality)
                 </span>
               </div>
             </div>
             <p class="text-[11px] text-slate-400 mb-2">
-              想定値と実態値の乖離面積が大きい項目ほど、事前のデューデリジェンスで確認すべきクリティカルな検証項目となります。
+              理想モデルと実際の現場スタイルの重なりは、相互にパフォーマンスを高め合える「シナジー領域」を表しています。
             </p>
           </div>
 
@@ -260,650 +264,54 @@
         <div class="md:col-span-5 bg-brand-900 border border-slate-800 rounded-xl p-5 shadow-xl flex flex-col justify-between">
           <div>
             <h4 class="text-xs font-bold font-mono text-slate-300 mb-3 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-              DIMENSIONAL GAP BREAKDOWN
+              <span class="w-2 h-2 rounded-full bg-synergy-400"></span>
+              DIMENSIONAL ALIGNMENT
             </h4>
             <div class="space-y-3.5" id="metric-bars-container">
               <!-- Dynamically populated with bar charts -->
             </div>
           </div>
           <div class="mt-4 pt-3 border-t border-slate-800/80 text-[11px] text-slate-400">
-            <span class="text-brand-400 font-bold">Key Takeaway:</span>
-            最も乖離の大きかった指標を軸に、次回の企業精査・面接設問を設計します。
+            <span class="text-synergy-300 font-bold">Key Focus:</span>
+            特徴的な差異のある項目は、面談や事前のすり合わせで解像度を上げることで、確固たる活躍基盤へと変えられます。
           </div>
         </div>
 
       </div>
 
-      <!-- Structural Analysis Section (Why the gap occurred) -->
+      <!-- Structural Analysis Section -->
       <div class="bg-brand-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
         <div class="border-b border-slate-800 pb-3 flex items-center justify-between">
           <h4 class="text-sm font-bold text-white flex items-center gap-2">
-            <span class="text-brand-400 font-mono">CHECK:</span> 構造的要因の客観検証（なぜ認識ギャップが発生したか）
+            <span class="text-synergy-300 font-mono">INSIGHT:</span> 組織力学とポテンシャル発揮のポイント
           </h4>
-          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">力学的分析</span>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">強み最大化分析</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs leading-relaxed text-slate-300">
           <div class="p-3.5 rounded-lg bg-brand-950/70 border border-slate-800">
-            <span class="font-bold text-brand-400 font-mono block mb-1">01. 組織体と商流の構造的制約</span>
+            <span class="font-bold text-brand-400 font-mono block mb-1">01. 組織スタイルと推進アプローチの調和</span>
             <p id="structural-analysis-text-1">
-              ビジネスモデルにおける主権が受託側や外部パートナーにある場合、現場の裁量権は実質的にクライアントの要件定義に拘束されます。自社内での改善努力が商流の外圧によって相殺されやすい構造でした。
+              ビジネスモデルや商流の特性を理解した上で、自律推進と組織連携の最適なバランスを見出すアプローチを整理します。
             </p>
           </div>
           <div class="p-3.5 rounded-lg bg-brand-950/70 border border-slate-800">
-            <span class="font-bold text-amber-400 font-mono block mb-1">02. 役割期待と評価ガバナンスの乖離</span>
+            <span class="font-bold text-synergy-300 font-mono block mb-1">02. 期待役割とサポート体制のベストミックス</span>
             <p id="structural-analysis-text-2">
-              現場ではアジリティや越境的な課題解決が求められる一方で、評価体系が前例規律型・減点主義のまま据え置かれていたため、期待役割と実際の評価基準の間で二重拘束が生じていました。
+              求められる成果に対して、チーム連携や権限委譲、適切なフィードバックをどのように組み合わせるかを明確にします。
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Next Career Fit Matrix (Recommended vs Due Diligence Checkpoints) -->
+      <!-- Next Career Fit Matrix -->
       <div class="bg-brand-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-5">
         <div class="border-b border-slate-800 pb-3">
           <h4 class="text-sm font-bold text-white flex items-center gap-2">
-            <span class="text-brand-400 font-mono">ACTION 01:</span> 次期キャリア適合マトリクス（Next Career Fit Matrix）
+            <span class="text-synergy-300 font-mono">ACTION 01:</span> 活躍環境アライメント設計（Next Career Fit Matrix）
           </h4>
           <p class="text-xs text-slate-400 mt-1">
-            志向性と客観的な転換要因から逆算した、親和性の高い環境と事前スクリーニング時の要精査ポイントです。
+            自身の持ち味を最もレバレッジできる環境と、事前にすり合わせを行っておくべき組織特性の整理です。
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-          <!-- Recommended Profile -->
-          <div class="p-4 rounded-xl bg-gradient-to-br from-brand-950 to-brand-900 border border-brand-700/60 shadow">
-            <div class="flex items-center gap-2 text-xs font-bold text-brand-300 font-mono mb-2">
-              <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              推奨される親和性の高い環境 (Target Environment)
-            </div>
-            <ul class="space-y-2 text-xs text-slate-200 mt-3" id="recommended-fit-list">
-              <!-- Dynamically populated -->
-            </ul>
-          </div>
-
-          <!-- Due Diligence Checkpoints (Refined from Exclusion) -->
-          <div class="p-4 rounded-xl bg-gradient-to-br from-brand-950 to-slate-900 border border-slate-700/80 shadow">
-            <div class="flex items-center gap-2 text-xs font-bold text-amber-300 font-mono mb-2">
-              <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-              </svg>
-              事前スクリーニングで注意するべきポイント (Due Diligence Checkpoints)
-            </div>
-            <ul class="space-y-2 text-xs text-slate-200 mt-3" id="exclusion-fit-list">
-              <!-- Dynamically populated -->
-            </ul>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Action Plan: Due Diligence & Reverse Questions -->
-      <div class="bg-brand-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-6">
-        
-        <div>
-          <h4 class="text-sm font-bold text-white flex items-center gap-2">
-            <span class="text-brand-400 font-mono">ACTION 02:</span> 選考プロセスの改善（事前調査 ＆ 面接逆質問スクリプト）
-          </h4>
-          <p class="text-xs text-slate-400 mt-1">
-            次期選考において、認識ギャップを未然に防ぎ「構造的実態」を角を立てずに見極めるための実戦プロトコルです。
-          </p>
-        </div>
-
-        <!-- Due Diligence Checklist -->
-        <div class="space-y-2">
-          <span class="text-xs font-bold text-brand-300 font-mono block">■ 事前デューデリジェンス着眼点（リサーチ盲点の補強）</span>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="dd-checklist-container">
-            <!-- Dynamically populated -->
-          </div>
-        </div>
-
-        <!-- Reverse Questions Script -->
-        <div class="space-y-3 pt-2">
-          <span class="text-xs font-bold text-amber-300 font-mono block">■ 次回面接での実態検証用「逆質問スクリプト」</span>
-          <div class="space-y-2.5" id="reverse-questions-container">
-            <!-- Dynamically populated -->
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-800/80 bg-brand-950 py-4 px-4 text-center text-xs text-slate-400 font-mono">
-    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-      <span>Career-Organization Fit PDCA Framework © 2026</span>
-      <span>Designed for Professional Portfolio & Due Diligence Auditing</span>
-    </div>
-  </footer>
-
-  <script>
-    // ------------------------------------------------------------------------
-    // DATA DEFINITIONS (5 Dimensions + Trigger - Refined for Professional Portfolio)
-    // ------------------------------------------------------------------------
-    const DIMENSIONS = [
-      {
-        id: "org",
-        title: "Q1. 組織体・ガバナンス形態",
-        desc: "入社前に想定・期待していた組織形態（Plan）と、現場で直面した実態（Reality）を選択してください。",
-        options: [
-          { id: "jtc", name: "大企業・大手", sub: "JTC、財閥系、東証プライム、旧公社", scores: [2, 1, 2, 4, 2] },
-          { id: "foreign", name: "外資系日本法人", sub: "メガ外資、IT/金融/コンサル/製薬", scores: [4, 4, 4, 3, 3] },
-          { id: "megaven", name: "メガベンチャー", sub: "上場新興大手、数百〜数千人規模の急成長", scores: [4, 4, 3, 3, 4] },
-          { id: "mid", name: "中堅企業（基盤安定）", sub: "特定領域シェア高、業歴の長い手堅い老舗", scores: [3, 2, 3, 3, 3] },
-          { id: "growth", name: "急成長ベンチャー", sub: "シリーズB/C、50〜300人、組織拡大の成長痛", scores: [4, 4, 3, 2, 3] },
-          { id: "zombie", name: "中小・事業再編期（外部資本依存型）", sub: "低収益下請け、資金調達による事業維持、昇給余力の制限", scores: [1, 2, 1, 1, 1] },
-          { id: "startup", name: "シード/スタートアップ", sub: "30人未満、創業者直轄・初期カオス", scores: [5, 5, 2, 1, 2] },
-          { id: "family", name: "小規模・オーナー経営型", sub: "数人〜十数人、トップ直接指示、属人的な業務運用", scores: [2, 2, 1, 1, 1] },
-          { id: "public", name: "公共・準公的機関", sub: "独立行政法人、公益財団、自治体外郭、生協", scores: [1, 1, 2, 4, 3] },
-          { id: "specialist", name: "専門家組織・士業", sub: "学校/大学、研究機関、特許・会計事務所", scores: [3, 2, 3, 2, 2] }
-        ]
-      },
-      {
-        id: "flow",
-        title: "Q2. 業界・商流構造（外圧の発生源）",
-        desc: "事業の主権がどこにあり、どのような外圧・納期拘束が働いていたかを選択してください。",
-        options: [
-          { id: "agency", name: "受託・代理店・下請け型", sub: "SIer、広告代理店、受託開発、下請工事", scores: [2, 3, 2, 2, 2] },
-          { id: "bpo", name: "客先常駐・BPO型", sub: "常駐SES、事務代行、コールセンター受託", scores: [1, 2, 2, 1, 1] },
-          { id: "b2c", name: "BtoC・対エンドユーザー型", sub: "飲食・小売、ホテル、一般消費者CS対応", scores: [2, 3, 2, 2, 2] },
-          { id: "saas", name: "自社プロダクト・自社事業型", sub: "自社SaaS、自社メーカー、自社Web運営", scores: [4, 4, 4, 3, 4] },
-          { id: "deal", name: "仲介・ディール・成果報酬型", sub: "M&A仲介、人材紹介、不動産売買", scores: [4, 4, 4, 2, 2] },
-          { id: "infra", name: "規制・公共・インフラ型", sub: "金融、医療、インフラ、官公需、卸売", scores: [2, 1, 3, 4, 3] },
-          { id: "uncertain", name: "権利・市況・不確実性型", sub: "知財/IP、商社投機、バイオ/ディープテック", scores: [3, 2, 3, 2, 2] }
-        ]
-      },
-      {
-        id: "role",
-        title: "Q3. 職務・機能（担う役割の本質）",
-        desc: "自身が担うと想定していた機能と、実際の現場工数で多くを占めた実態を選択してください。",
-        options: [
-          { id: "sales", name: "営業・フロント型", sub: "法人/個人営業、インサイドセールス、販売", scores: [3, 4, 4, 2, 3] },
-          { id: "dev", name: "企画・開発・制作型", sub: "エンジニア、デザイナー、商品企画、PdM、広報", scores: [4, 4, 3, 3, 3] },
-          { id: "care", name: "対人対応・ケア・接客型", sub: "店舗接客、CS窓口、教師・講師、医療・介護", scores: [2, 2, 2, 2, 2] },
-          { id: "ops", name: "現場実行・現業型", sub: "ドライバー、倉庫物流、施工管理、製造ライン", scores: [1, 2, 2, 2, 2] },
-          { id: "it_infra", name: "保守・運用・社内IT型", sub: "システム保守、情シス・社内SE、QAテスト", scores: [2, 2, 3, 3, 2] },
-          { id: "backoffice", name: "バックオフィス・事務型", sub: "経理、財務、人事労務、法務、総務、行政事務", scores: [3, 2, 3, 3, 3] }
-        ]
-      },
-      {
-        id: "level",
-        title: "Q4. 階層・ポジション（期待された権限）",
-        desc: "自身に与えられると想定していた裁量権限と、現場での実際の立ち位置を選択してください。",
-        options: [
-          { id: "junior", name: "若手・メンバー層", sub: "新卒・第2新卒、定常タスク実行", scores: [2, 3, 2, 3, 3] },
-          { id: "senior", name: "中堅・主力プレイヤー層", sub: "一人前、現場エース、実務の中核", scores: [3, 3, 3, 2, 2] },
-          { id: "lead", name: "プレイング管理職層", sub: "主任、係長、課長、リーダー", scores: [3, 2, 3, 2, 2] },
-          { id: "head", name: "部門統括・シニアマネジメント", sub: "部長、本部長、事業部長", scores: [4, 3, 3, 3, 3] },
-          { id: "cxo", name: "経営・役員層", sub: "取締役、CxO、執行役員、創業者側近", scores: [5, 4, 4, 2, 2] }
-        ]
-      },
-      {
-        id: "status",
-        title: "Q5. 雇用形態・立ち位置（情報の受容度）",
-        desc: "入社前に想定していた社内での立ち位置と、実態として扱われた立場を選択してください。",
-        options: [
-          { id: "proper", name: "正社員（プロパー）", sub: "新卒入社、初期創業メンバー、社内中枢", scores: [3, 2, 3, 4, 4] },
-          { id: "mid_career", name: "中途正社員（キャリア採用）", sub: "即戦力採用、外様、成果要求の先鋭化", scores: [4, 3, 3, 2, 2] },
-          { id: "contract", name: "有期雇用・業務委託", sub: "契約社員、常駐フリーランス、嘱託", scores: [3, 3, 2, 1, 2] },
-          { id: "indirect", name: "間接雇用・非正規", sub: "派遣社員、パート・アルバイト、下請け出向", scores: [1, 2, 1, 1, 1] }
-        ]
-      },
-      {
-        id: "trigger",
-        title: "Q6. 転換点・決定打（衛生要因の決裂ポイント）",
-        desc: "入社時に最も重視・期待していた衛生条件（Plan）と、最終的にアライメントが破綻した決定打（Reality）を選択してください。",
-        options: [
-          { id: "relation", name: "組織内コミュニケーション・指導方針", sub: "心理的安全性、理不尽な叱責、過剰マイクロマネジメント", scores: [3, 3, 3, 3, 1] },
-          { id: "workload", name: "労働環境・心身の持続可能性", sub: "適切な稼働、連日深夜残業、休日稼働、心身限界", scores: [2, 3, 2, 1, 3] },
-          { id: "reward", name: "評価制度・処遇の納得感", sub: "公平な処遇、評価基準の不透明さ、昇給停止", scores: [3, 2, 1, 2, 2] },
-          { id: "culture", name: "企業理念・ガバナンス方針の整合", sub: "経営陣への信認、朝令暮改、過剰な精神論・倫理不信", scores: [3, 3, 2, 2, 1] },
-          { id: "growth_opp", name: "中長期的な市場価値・成長機会", sub: "汎用スキル獲得、社内特有業務での膠着、業績不安", scores: [3, 3, 3, 2, 2] },
-          { id: "contract_fraud", name: "募集条件・職務要件の乖離（JDアンマッチ）", sub: "選考時想定とのギャップ、初期アサインと役割の相違", scores: [2, 2, 1, 1, 1] },
-          { id: "structure_shift", name: "組織体制・経営方針の急変", sub: "事業の継続性、採用上司の退職、突然の事業ピボット", scores: [2, 2, 2, 1, 1] },
-          { id: "lifestyle", name: "ライフステージ適合", sub: "持続可能な就業、家庭・健康事情などの不可抗力", scores: [3, 2, 3, 2, 2] }
-        ]
-      }
-    ];
-
-    // Current State
-    let currentStep = 0;
-    const answers = {
-      plan: [],
-      reality: []
-    };
-    let chartInstance = null;
-
-    // Initialize UI
-    window.onload = () => {
-      renderStep(0);
-    };
-
-    function renderStep(stepIndex) {
-      currentStep = stepIndex;
-      const dim = DIMENSIONS[stepIndex];
-
-      // Step text & progress
-      document.getElementById('step-number-text').innerText = `DIMENSION 0${stepIndex + 1} / 06`;
-      document.getElementById('step-name-text').innerText = dim.title;
-      document.getElementById('dimension-title').innerText = dim.title;
-      document.getElementById('dimension-desc').innerText = dim.desc;
-      document.getElementById('progress-bar').style.width = `${((stepIndex + 1) / 6) * 100}%`;
-
-      // Buttons
-      document.getElementById('prev-btn').disabled = (stepIndex === 0);
-      updateNextButtonState();
-
-      // Render Plan Options
-      const planContainer = document.getElementById('plan-options-container');
-      planContainer.innerHTML = '';
-      dim.options.forEach(opt => {
-        const isSelected = answers.plan[stepIndex] === opt.id;
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = `w-full text-left p-2.5 rounded-lg border transition text-xs flex flex-col gap-0.5 ${
-          isSelected 
-            ? 'bg-brand-900 border-brand-500 text-white shadow-sm ring-1 ring-brand-500' 
-            : 'bg-brand-950/40 border-slate-800 text-slate-300 hover:bg-slate-800/60 hover:border-slate-700'
-        }`;
-        btn.onclick = () => selectOption('plan', stepIndex, opt.id);
-        btn.innerHTML = `
-          <div class="flex items-center justify-between">
-            <span class="font-bold ${isSelected ? 'text-brand-300' : 'text-slate-200'}">${opt.name}</span>
-            ${isSelected ? '<span class="text-brand-400 font-mono text-[10px]">● SELECT</span>' : ''}
-          </div>
-          <span class="text-[11px] text-slate-400 leading-tight">${opt.sub}</span>
-        `;
-        planContainer.appendChild(btn);
-      });
-
-      // Render Reality Options
-      const realityContainer = document.getElementById('reality-options-container');
-      realityContainer.innerHTML = '';
-      dim.options.forEach(opt => {
-        const isSelected = answers.reality[stepIndex] === opt.id;
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = `w-full text-left p-2.5 rounded-lg border transition text-xs flex flex-col gap-0.5 ${
-          isSelected 
-            ? 'bg-amber-950/40 border-amber-500 text-white shadow-sm ring-1 ring-amber-500' 
-            : 'bg-brand-950/40 border-slate-800 text-slate-300 hover:bg-slate-800/60 hover:border-slate-700'
-        }`;
-        btn.onclick = () => selectOption('reality', stepIndex, opt.id);
-        btn.innerHTML = `
-          <div class="flex items-center justify-between">
-            <span class="font-bold ${isSelected ? 'text-amber-300' : 'text-slate-200'}">${opt.name}</span>
-            ${isSelected ? '<span class="text-amber-400 font-mono text-[10px]">● SELECT</span>' : ''}
-          </div>
-          <span class="text-[11px] text-slate-400 leading-tight">${opt.sub}</span>
-        `;
-        realityContainer.appendChild(btn);
-      });
-
-      // Badges
-      const planOpt = dim.options.find(o => o.id === answers.plan[stepIndex]);
-      const realityOpt = dim.options.find(o => o.id === answers.reality[stepIndex]);
-      
-      const pBadge = document.getElementById('plan-selected-badge');
-      if (planOpt) {
-        pBadge.innerText = planOpt.name;
-        pBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-brand-900 text-brand-300 border border-brand-700';
-      } else {
-        pBadge.innerText = '未選択';
-        pBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400';
-      }
-
-      const rBadge = document.getElementById('reality-selected-badge');
-      if (realityOpt) {
-        rBadge.innerText = realityOpt.name;
-        rBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-700';
-      } else {
-        rBadge.innerText = '未選択';
-        rBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400';
-      }
-    }
-
-    function selectOption(type, stepIndex, optionId) {
-      answers[type][stepIndex] = optionId;
-      renderStep(stepIndex);
-      
-      // Auto advance hint if both chosen
-      if (answers.plan[stepIndex] && answers.reality[stepIndex]) {
-        document.getElementById('step-hint').classList.remove('text-slate-500');
-        document.getElementById('step-hint').classList.add('text-brand-400', 'font-medium');
-      }
-    }
-
-    function updateNextButtonState() {
-      const isComplete = answers.plan[currentStep] && answers.reality[currentStep];
-      const nextBtn = document.getElementById('next-btn');
-      nextBtn.disabled = !isComplete;
-      
-      if (currentStep === 5) {
-        nextBtn.innerText = 'レポートを生成する →';
-      } else {
-        nextBtn.innerText = '次の軸へ進む →';
-      }
-    }
-
-    function prevStep() {
-      if (currentStep > 0) {
-        renderStep(currentStep - 1);
-      }
-    }
-
-    function nextStep() {
-      if (currentStep < 5) {
-        renderStep(currentStep + 1);
-      } else {
-        generateReport();
-      }
-    }
-
-    // Load presets for recruiters
-    function loadScenario(type) {
-      if (type === 'saas') {
-        answers.plan = ['megaven', 'saas', 'dev', 'senior', 'mid_career', 'growth_opp'];
-        answers.reality = ['growth', 'agency', 'dev', 'lead', 'proper', 'reward'];
-      } else if (type === 'jtc') {
-        answers.plan = ['jtc', 'infra', 'backoffice', 'lead', 'mid_career', 'reward'];
-        answers.reality = ['jtc', 'infra', 'backoffice', 'junior', 'proper', 'structure_shift'];
-      } else if (type === 'ses') {
-        answers.plan = ['mid', 'saas', 'it_infra', 'senior', 'mid_career', 'growth_opp'];
-        answers.reality = ['zombie', 'bpo', 'it_infra', 'junior', 'contract', 'contract_fraud'];
-      }
-      generateReport();
-    }
-
-    function restartAssessment() {
-      answers.plan = [];
-      answers.reality = [];
-      document.getElementById('result-section').classList.add('hidden');
-      document.getElementById('wizard-section').classList.remove('hidden');
-      renderStep(0);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // ------------------------------------------------------------------------
-    // GENERATION ENGINE & METRICS CALCULATION
-    // ------------------------------------------------------------------------
-    function generateReport() {
-      document.getElementById('wizard-section').classList.add('hidden');
-      document.getElementById('result-section').classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      // Calculate Scores
-      const labels = [
-        "裁量・自律性",
-        "意思決定スピード",
-        "成果・評価納得感",
-        "リソース・支援体制",
-        "情報透明性・開放性"
-      ];
-
-      let planScores = [0, 0, 0, 0, 0];
-      let realityScores = [0, 0, 0, 0, 0];
-
-      for (let i = 0; i < 6; i++) {
-        const dim = DIMENSIONS[i];
-        const pOpt = dim.options.find(o => o.id === answers.plan[i]);
-        const rOpt = dim.options.find(o => o.id === answers.reality[i]);
-
-        if (pOpt) {
-          pOpt.scores.forEach((s, idx) => planScores[idx] += s);
-        }
-        if (rOpt) {
-          rOpt.scores.forEach((s, idx) => realityScores[idx] += s);
-        }
-      }
-
-      // Normalize scores out of 10
-      planScores = planScores.map(v => Math.min(10, Math.round((v / 24) * 10)));
-      realityScores = realityScores.map(v => Math.min(10, Math.round((v / 24) * 10)));
-
-      // Calculate Gaps
-      const gaps = planScores.map((p, idx) => Math.abs(p - realityScores[idx]));
-      const totalGap = gaps.reduce((a, b) => a + b, 0);
-      const alignmentIndex = Math.max(15, Math.min(95, Math.round(100 - (totalGap * 2.8))));
-
-      document.getElementById('alignment-score').innerHTML = `${alignmentIndex}<span class="text-sm text-slate-500 font-normal">%</span>`;
-
-      // Find Max Gap Index
-      let maxGapIdx = 0;
-      let maxGapVal = -1;
-      gaps.forEach((g, idx) => {
-        if (g > maxGapVal) {
-          maxGapVal = g;
-          maxGapIdx = idx;
-        }
-      });
-
-      // Render Bar Breakdown
-      const barsContainer = document.getElementById('metric-bars-container');
-      barsContainer.innerHTML = '';
-      labels.forEach((label, idx) => {
-        const p = planScores[idx];
-        const r = realityScores[idx];
-        const diff = r - p;
-        const diffText = diff > 0 ? `+${diff}` : `${diff}`;
-        const isMax = (idx === maxGapIdx);
-
-        const row = document.createElement('div');
-        row.className = `p-2 rounded border ${isMax ? 'bg-brand-950 border-amber-600/50' : 'border-slate-800/80 bg-slate-900/40'}`;
-        row.innerHTML = `
-          <div class="flex justify-between items-center text-xs mb-1">
-            <span class="font-medium text-slate-300 flex items-center gap-1.5">
-              ${isMax ? '<span class="text-amber-400 font-mono text-[10px]">★ 最大乖離</span>' : ''}
-              ${label}
-            </span>
-            <span class="font-mono text-[11px] ${diff < 0 ? 'text-amber-400' : 'text-slate-400'}">
-              GAP: ${diffText} pt
-            </span>
-          </div>
-          <div class="space-y-1">
-            <div class="flex items-center gap-2">
-              <span class="text-[9px] font-mono text-brand-400 w-8">想定 ${p}</span>
-              <div class="flex-grow bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                <div class="bg-brand-400 h-full rounded-full" style="width: ${p * 10}%"></div>
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-[9px] font-mono text-amber-400 w-8">実態 ${r}</span>
-              <div class="flex-grow bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                <div class="bg-amber-400 h-full rounded-full" style="width: ${r * 10}%"></div>
-              </div>
-            </div>
-          </div>
-        `;
-        barsContainer.appendChild(row);
-      });
-
-      // Render Radar Chart
-      renderRadar(labels, planScores, realityScores);
-
-      // Render Dynamic Texts based on chosen values
-      renderTailoredContent(maxGapIdx, answers);
-    }
-
-    function renderRadar(labels, planScores, realityScores) {
-      const ctx = document.getElementById('gapRadarChart').getContext('2d');
-      if (chartInstance) {
-        chartInstance.destroy();
-      }
-
-      chartInstance = new Chart(ctx, {
-        type: 'radar',
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: '想定 (Plan)',
-              data: planScores,
-              borderColor: '#3b82f6',
-              backgroundColor: 'rgba(59, 130, 246, 0.15)',
-              borderWidth: 2,
-              borderDash: [4, 4],
-              pointBackgroundColor: '#3b82f6',
-              pointRadius: 3
-            },
-            {
-              label: '実態 (Reality)',
-              data: realityScores,
-              borderColor: '#f59e0b',
-              backgroundColor: 'rgba(245, 158, 11, 0.2)',
-              borderWidth: 2,
-              pointBackgroundColor: '#f59e0b',
-              pointRadius: 4
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            r: {
-              angleLines: { color: 'rgba(51, 65, 85, 0.5)' },
-              grid: { color: 'rgba(51, 65, 85, 0.5)' },
-              pointLabels: {
-                color: '#cbd5e1',
-                font: { size: 10, family: "'Noto Sans JP', sans-serif" }
-              },
-              ticks: {
-                display: false,
-                stepSize: 2,
-                max: 10,
-                min: 0
-              }
-            }
-          },
-          plugins: {
-            legend: { display: false }
-          }
-        }
-      });
-    }
-
-    function renderTailoredContent(maxGapIdx, answers) {
-      const pOrg = DIMENSIONS[0].options.find(o => o.id === answers.plan[0]);
-      const rOrg = DIMENSIONS[0].options.find(o => o.id === answers.reality[0]);
-      const pFlow = DIMENSIONS[1].options.find(o => o.id === answers.plan[1]);
-      const rFlow = DIMENSIONS[1].options.find(o => o.id === answers.reality[1]);
-      const trigger = DIMENSIONS[5].options.find(o => o.id === answers.reality[5]);
-
-      // Dynamic Headline
-      const maxGapNames = [
-        "裁量自律性の制限",
-        "意思決定プロセスの膠着",
-        "成果評価基準の不透明性",
-        "支援リソースの著しい不足",
-        "情報アクセスの格差と非対称性"
-      ];
-      document.getElementById('summary-headline').innerText = 
-        `${pOrg.name}想定に対する${rOrg.name}環境での「${maxGapNames[maxGapIdx]}」`;
-
-      // Structural Analysis Texts
-      document.getElementById('structural-analysis-text-1').innerText = 
-        `事前の想定では【${pOrg.name}】における【${pFlow.name}】を志向されていましたが、実際の現場は【${rOrg.name}】特有の制約と【${rFlow.name}】による強い外部圧力が支配していました。主権がクライアント側や上位階層に偏在していたため、個人がコントロールできる変数が極小化されていたことが構造的本質です。`;
-
-      document.getElementById('structural-analysis-text-2').innerText = 
-        `最終的な転換契機が【${trigger.name}】となった構造的要因は、求められる成果責任に対して【現場の決定権限や組織的支援リソースの配分】が釣り合っていなかった「リソース・ガバナンス設計の不均衡」にあります。役割要件と提供環境のバランスが論理的に乖離していた状態と言えます。`;
-
-      // Recommended vs Due Diligence Checkpoints
-      const recList = document.getElementById('recommended-fit-list');
-      recList.innerHTML = `
-        <li class="flex items-start gap-2">
-          <span class="text-brand-400 font-bold">•</span>
-          <div>
-            <strong>推奨組織タイプ:</strong> 中堅企業（基盤安定型）または自社SaaS/事業会社。
-            <p class="text-slate-400 text-[11px] mt-0.5">商流の外圧を直接受けず、仕様決定や納期管理の主権が自社内にある環境。</p>
-          </div>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-brand-400 font-bold">•</span>
-          <div>
-            <strong>推奨評価モデル:</strong> 成果責任と裁量権限が1対1で対応するジョブ型・分業体制。
-            <p class="text-slate-400 text-[11px] mt-0.5">「役割の範囲外の突発火消し」で評価を摩耗されない制度設計が必須です。</p>
-          </div>
-        </li>
-      `;
-
-      const excList = document.getElementById('exclusion-fit-list');
-      excList.innerHTML = `
-        <li class="flex items-start gap-2">
-          <span class="text-amber-400 font-bold">•</span>
-          <div>
-            <strong>商流・納期管理の構造的リスク:</strong> 多重受託・客先常駐型モデル
-            <p class="text-slate-400 text-[11px] mt-0.5">クライアント起因の突発案件が生じやすく、裁量権が拘束されやすいため「仕様変更の頻度と現場の裁量範囲」の事前確認が必須です。</p>
-          </div>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-amber-400 font-bold">•</span>
-          <div>
-            <strong>意思決定と制度運用の透明性:</strong> 創業者直轄型・オーナー経営組織
-            <p class="text-slate-400 text-[11px] mt-0.5">評価基準や意思決定の属人化を防ぐため、「評価制度の運用年数とフィードバックの頻度」を面接時に精査することを推奨します。</p>
-          </div>
-        </li>
-      `;
-
-      // Due Diligence Checklist
-      const ddContainer = document.getElementById('dd-checklist-container');
-      ddContainer.innerHTML = `
-        <div class="p-2.5 rounded bg-brand-950/60 border border-slate-800 text-xs">
-          <span class="text-brand-300 font-bold block mb-1">① 資本構成と決裁規程の精査</span>
-          <p class="text-slate-400 text-[11px]">大株主比率や親族取締役の有無、稟議承認フローの平均階層数（現場決裁の限度額）。</p>
-        </div>
-        <div class="p-2.5 rounded bg-brand-950/60 border border-slate-800 text-xs">
-          <span class="text-brand-300 font-bold block mb-1">② 売上構成比における商流依存度</span>
-          <p class="text-slate-400 text-[11px]">特定上位クライアントへの売上依存率が30%を超えていないか（実質下請け化の有無）。</p>
-        </div>
-        <div class="p-2.5 rounded bg-brand-950/60 border border-slate-800 text-xs">
-          <span class="text-brand-300 font-bold block mb-1">③ 中途比率と登用実績の確認</span>
-          <p class="text-slate-400 text-[11px]">配属先チームの中途比率と、直近1〜2年で中途入社したメンバーの定着率および昇格実績。</p>
-        </div>
-        <div class="p-2.5 rounded bg-brand-950/60 border border-slate-800 text-xs">
-          <span class="text-brand-300 font-bold block mb-1">④ 目標設定と評価のフィードバック頻度</span>
-          <p class="text-slate-400 text-[11px]">期中でのKPI見直しルールが存在するか、フィードバック面談が形骸化していないか。</p>
-        </div>
-      `;
-
-      // Reverse Questions
-      const rqContainer = document.getElementById('reverse-questions-container');
-      rqContainer.innerHTML = `
-        <div class="p-3 rounded-lg bg-brand-950 border border-brand-800/60 text-xs">
-          <div class="flex items-center justify-between text-brand-300 font-bold mb-1">
-            <span>Question 01: 実務工数の実態割合</span>
-            <span class="text-[10px] font-mono text-slate-500">職務アライメント検証</span>
-          </div>
-          <p class="text-slate-300 leading-relaxed">
-            「今回募集されているポジションで、現在最も成果を出されている方の【1週間の実務工数内訳】（戦略企画・顧客対応・社内調整・突発火消し業務などの割合）を教えていただけますでしょうか？」
-          </p>
-        </div>
-
-        <div class="p-3 rounded-lg bg-brand-950 border border-brand-800/60 text-xs">
-          <div class="flex items-center justify-between text-brand-300 font-bold mb-1">
-            <span>Question 02: 裁量権限とエスカレーション</span>
-            <span class="text-[10px] font-mono text-slate-500">階層ガバナンス検証</span>
-          </div>
-          <p class="text-slate-300 leading-relaxed">
-            「現場主導で施策の変更や仕様判断を行う際、現場リーダーの権限で確定できる範囲と、経営層や他部門への承認が必要となるラインはどのように定義されていますか？」
-          </p>
-        </div>
-
-        <div class="p-3 rounded-lg bg-brand-950 border border-brand-800/60 text-xs">
-          <div class="flex items-center justify-between text-brand-300 font-bold mb-1">
-            <span>Question 03: 外部環境変化への適応方針</span>
-            <span class="text-[10px] font-mono text-slate-500">商流・持続性検証</span>
-          </div>
-          <p class="text-slate-300 leading-relaxed">
-            「事業計画に対してクライアントからの要件変更や市場変化などの突発要因が生じた際、現場へのリソース再配分やスケジュールの見直しはどのようなプロセスで実施されますか？」
-          </p>
-        </div>
-      `;
-    }
-  </script>
-</body>
-</html>
+        <div class="grid grid-cols
