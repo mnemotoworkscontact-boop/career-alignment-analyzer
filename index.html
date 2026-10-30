@@ -68,7 +68,7 @@
         <div>
           <h1 class="text-sm font-bold text-white tracking-tight flex items-center gap-2">
             Career Synergy & Alignment Analyzer
-            <span class="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-brand-800 text-brand-400 border border-brand-700/50">v3.1 Synergy Pro</span>
+            <span class="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-brand-800 text-brand-400 border border-brand-700/50">v3.0 Synergy Pro</span>
           </h1>
           <p class="text-[11px] text-slate-400">組織特性と個人の持ち味を調和させ、活躍ポテンシャルを最大化するアライメント分析</p>
         </div>
@@ -89,7 +89,7 @@
       </div>
       <div class="flex flex-wrap gap-2">
         <button onclick="loadScenario('ideal')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-synergy-300 hover:text-white border border-synergy-500/50 transition text-[11px]">
-          ① ベストシナジー（完全一致モデル）
+          ① ベストシナジー（高適合モデル）
         </button>
         <button onclick="loadScenario('saas')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition text-[11px]">
           ② スタートアップ成長期でのスピード適応
@@ -314,4 +314,638 @@
           </p>
         </div>
 
-        <div class="grid grid-cols
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- Recommended Profile -->
+          <div class="p-4 rounded-xl bg-gradient-to-br from-brand-950 to-brand-900 border border-synergy-700/60 shadow">
+            <div class="flex items-center gap-2 text-xs font-bold text-synergy-300 font-mono mb-2">
+              <svg class="w-4 h-4 text-synergy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              持ち味を最大限に発揮できる親和性の高い環境 (Target Environment)
+            </div>
+            <ul class="space-y-2 text-xs text-slate-200 mt-3" id="recommended-fit-list">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+          <!-- Cautionary Profile -->
+          <div class="p-4 rounded-xl bg-gradient-to-br from-brand-950 to-slate-900 border border-slate-700/60 shadow">
+            <div class="flex items-center gap-2 text-xs font-bold text-brand-300 font-mono mb-2">
+              <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              事前に期待値をすり合わせておくべき環境 (Alignment Focus)
+            </div>
+            <ul class="space-y-2 text-xs text-slate-200 mt-3" id="exclusion-fit-list">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Action Plan: Dialogue & Engagement Questions -->
+      <div class="bg-brand-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-6">
+        
+        <div>
+          <h4 class="text-sm font-bold text-white flex items-center gap-2">
+            <span class="text-synergy-300 font-mono">ACTION 02:</span> 相互理解を深めるエンゲージメント対話（面談スクリプト）
+          </h4>
+          <p class="text-xs text-slate-400 mt-1">
+            選考・面談を通じて企業と個人の期待値を高め合い、入社初日からスムーズに成果を出すためのポジティブな対話テーマです。
+          </p>
+        </div>
+
+        <!-- Mutual Understanding Checklist -->
+        <div class="space-y-2">
+          <span class="text-xs font-bold text-synergy-300 font-mono block">■ 組織文化・カルチャーの相互理解ポイント</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="dd-checklist-container">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Constructive Questions Script -->
+        <div class="space-y-3 pt-2">
+          <span class="text-xs font-bold text-brand-300 font-mono block">■ 相互の期待値を高める「エンゲージメント質問スクリプト」</span>
+          <div class="space-y-2.5" id="reverse-questions-container">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-brand-950 py-4 px-4 text-center text-xs text-slate-400 font-mono">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <span>Career-Organization Synergy Framework © 2026</span>
+      <span>Designed for Professional Career Development & Organizational Alignment</span>
+    </div>
+  </footer>
+
+  <script>
+    // ------------------------------------------------------------------------
+    // DATA DEFINITIONS (ポジティブ＆ビジネス表現)
+    // ------------------------------------------------------------------------
+    const DIMENSIONS = [
+      {
+        id: "org",
+        title: "Q1. 組織体・ガバナンス形態",
+        desc: "自身が最も力を発揮しやすい理想モデル（Plan）と、現場組織の運用スタイル（Reality）を選択してください。",
+        options: [
+          { id: "jtc", name: "大手エンタープライズ", sub: "東証プライム、財閥系、規程と合意形成による確実な事業推進", scores: [2, 1, 2, 4, 2] },
+          { id: "foreign", name: "外資系日本法人", sub: "グローバルスタンダード、自律性と明確なミッション設計", scores: [4, 4, 4, 3, 3] },
+          { id: "megaven", name: "メガベンチャー", sub: "新興上場企業、スケール感と推進スピードの共存", scores: [4, 4, 3, 3, 4] },
+          { id: "mid", name: "中堅企業（基盤安定型）", sub: "特定領域で高いプレゼンス、堅実な事業基盤とチームワーク", scores: [3, 2, 3, 3, 3] },
+          { id: "growth", name: "ミドル〜レイタースタートアップ", sub: "事業拡大期、仕組化と挑戦が同時に求められる躍動的な環境", scores: [4, 4, 3, 2, 3] },
+          { id: "zombie", name: "成熟中小企業（少数精鋭型）", sub: "特定の顧客基盤を重視、限られたメンバーでの密な連携", scores: [1, 2, 1, 1, 1] },
+          { id: "startup", name: "アーリー期スタートアップ", sub: "シード・シリーズA、経営陣と一体となったスピーディーな立ち上げ", scores: [5, 5, 2, 1, 2] },
+          { id: "family", name: "オーナーシップ企業", sub: "迅速な意思決定、トップのビジョンに沿った力強い牽引", scores: [2, 2, 1, 1, 1] },
+          { id: "public", name: "公共・準公的機関", sub: "公益法人、社会基盤を支える高信頼・安定運用重視", scores: [1, 1, 2, 4, 3] },
+          { id: "specialist", name: "専門職・プロフェッショナルファーム", sub: "教育・法務・会計など、高度な専門性と知見の探求", scores: [3, 2, 3, 2, 2] }
+        ]
+      },
+      {
+        id: "flow",
+        title: "Q2. 業界・商流構造（価値提供のスタイル）",
+        desc: "事業の強みや顧客との関係性において、どのような連携スタイルが主軸となっているかを選択してください。",
+        options: [
+          { id: "agency", name: "ソリューション提供・パートナー型", sub: "SIer、受託、クライアントの課題解決にコミットする伴走型", scores: [2, 3, 2, 2, 2] },
+          { id: "bpo", name: "エキスパート常駐・業務支援型", sub: "現場密着支援、専門スキルによる顧客業務の円滑化", scores: [1, 2, 2, 1, 1] },
+          { id: "b2c", name: "エンドユーザー直結型", sub: "BtoCサービス、生活者に直接価値を届けるダイレクトな反響", scores: [2, 3, 2, 2, 2] },
+          { id: "saas", name: "自社プロダクト・自社事業型", sub: "SaaS・自社開発、ユーザーの声をもとに製品を育てるモデル", scores: [4, 4, 4, 3, 4] },
+          { id: "deal", name: "成果創出・マッチング型", sub: "人材紹介、M&A、成約や成果がダイレクトに評価へ結びつくモデル", scores: [4, 4, 4, 2, 2] },
+          { id: "infra", name: "社会インフラ・基盤型", sub: "金融、医療、インフラ、高信頼性と社会貢献性の高い事業", scores: [2, 1, 3, 4, 3] },
+          { id: "uncertain", name: "先進研究・イノベーション型", sub: "新領域開拓、ディープテック、未来の可能性を切り拓くR&D", scores: [3, 2, 3, 2, 2] }
+        ]
+      },
+      {
+        id: "role",
+        title: "Q3. 職務・機能（担う役割の強み）",
+        desc: "最も強みを発揮したい役割領域と、現場で価値を発揮している主要領域を選択してください。",
+        options: [
+          { id: "sales", name: "事業開発・リレーション構築", sub: "法人営業、顧客開拓、課題発掘とパートナーシップ構築", scores: [3, 4, 4, 2, 3] },
+          { id: "dev", name: "企画・プロダクト開発・DX推進", sub: "開発、デザイン、業務プロセス設計、デジタル活用", scores: [4, 4, 3, 3, 3] },
+          { id: "care", name: "カスタマーサクセス・顧客支援", sub: "顧客満足度向上、関係性構築、定着化の推進", scores: [2, 2, 2, 2, 2] },
+          { id: "ops", name: "オペレーション・推進管理", sub: "プロジェクト進行、業務フロー構築、安定運用の確立", scores: [1, 2, 2, 2, 2] },
+          { id: "it_infra", name: "社内システム・IT基盤マネジメント", sub: "社内DX、インフラ保守、セキュリティ・データ環境の整備", scores: [2, 2, 3, 3, 2] },
+          { id: "backoffice", name: "コーポレート・組織基盤強化", sub: "総務、人事、労務、経理など、会社成長を支えるバックボーン", scores: [3, 2, 3, 3, 3] }
+        ]
+      },
+      {
+        id: "level",
+        title: "Q4. 階層・ポジション（期待される責任と裁量）",
+        desc: "自身がリードしたい裁量の範囲と、現場において求められる役割範囲を選択してください。",
+        options: [
+          { id: "junior", name: "コアメンバー・実行推進層", sub: "着実なタスク遂行とチーム貢献を通じた成長フェーズ", scores: [2, 3, 2, 3, 3] },
+          { id: "senior", name: "主担当・自律推進プレイヤー", sub: "専門性を活かした主体的な課題解決、業務プロセスの構築", scores: [3, 3, 3, 2, 2] },
+          { id: "lead", name: "リーダー・プロジェクト統括", sub: "メンバー支援、業務進行管理、現場と組織のハブ機能", scores: [3, 2, 3, 2, 2] },
+          { id: "head", name: "マネジメント・事業部門長", sub: "部門方針の策定、リソース最適化、全社視点での成果創出", scores: [4, 3, 3, 3, 3] },
+          { id: "cxo", name: "経営推進・エグゼクティブ層", sub: "事業戦略の意思決定、組織文化の牽引、経営資源の配分", scores: [5, 4, 4, 2, 2] }
+        ]
+      },
+      {
+        id: "status",
+        title: "Q5. 雇用・関与形態（組織とのエンゲージメント）",
+        desc: "組織と共に歩むコミットメントスタイルを選択してください。",
+        options: [
+          { id: "proper", name: "基幹正社員（総合推進型）", sub: "中長期的な組織成長に貢献する中核メンバー", scores: [3, 2, 3, 4, 4] },
+          { id: "mid_career", name: "キャリア採用正社員（専門発揮型）", sub: "これまでの経験・知見を活かし、即応的な価値を生み出す役割", scores: [4, 3, 3, 2, 2] },
+          { id: "contract", name: "プロジェクト専任・アライアンス契約", sub: "特定テーマ・目標に焦点を当てた集中的な貢献スタイル", scores: [3, 3, 2, 1, 2] },
+          { id: "indirect", name: "パートナーシップ・協働型", sub: "客観的な視点と専門スキルを提供するフレキシブルな参画", scores: [1, 2, 1, 1, 1] }
+        ]
+      },
+      {
+        id: "trigger",
+        title: "Q6. 価値観の軸（エンゲージメント向上要因）",
+        desc: "仕事において最もエネルギーが湧き、モチベーションが高まる要素を選択してください。",
+        options: [
+          { id: "relation", name: "オープンな対話と心理的安全性", sub: "風通しの良いコミュニケーション、相互リスペクトのある環境", scores: [3, 3, 3, 3, 1] },
+          { id: "workload", name: "持続可能でメリハリある就業環境", sub: "健全なライフワークバランス、集中とリフレッシュの調和", scores: [2, 3, 2, 1, 3] },
+          { id: "reward", name: "成果と貢献に対する公正な評価", sub: "努力と成果が正当に認められるクリアな評価とインセンティブ", scores: [3, 2, 1, 2, 2] },
+          { id: "culture", name: "理念への共感と一貫したビジョン", sub: "目指す方向性が明確で、社会的な意義を感じられる組織文化", scores: [3, 3, 2, 2, 1] },
+          { id: "growth_opp", name: "スキルアップと自己成長の機会", sub: "新しい挑戦、汎用的な知見の獲得、自身の市場価値向上", scores: [3, 3, 3, 2, 2] },
+          { id: "contract_fraud", name: "明確なゴール設定と役割定義", sub: "任されるミッションが明確で、集中して力を発揮できる状態", scores: [2, 2, 1, 1, 1] },
+          { id: "structure_shift", name: "安定した事業基盤とチーム体制", sub: "チームワークの安定性、長期的な視野を持てる事業環境", scores: [2, 2, 2, 1, 1] },
+          { id: "lifestyle", name: "柔軟で働きやすいワークスタイル", sub: "リモートや柔軟な勤務形態など、個々の暮らしと調和する仕組み", scores: [3, 2, 3, 2, 2] }
+        ]
+      }
+    ];
+
+    // Current State
+    let currentStep = 0;
+    const answers = {
+      plan: [],
+      reality: []
+    };
+    let chartInstance = null;
+
+    // Initialize UI
+    window.onload = () => {
+      renderStep(0);
+    };
+
+    function renderStep(stepIndex) {
+      currentStep = stepIndex;
+      const dim = DIMENSIONS[stepIndex];
+
+      // Step text & progress
+      document.getElementById('step-number-text').innerText = `DIMENSION 0${stepIndex + 1} / 06`;
+      document.getElementById('step-name-text').innerText = dim.title;
+      document.getElementById('dimension-title').innerText = dim.title;
+      document.getElementById('dimension-desc').innerText = dim.desc;
+      document.getElementById('progress-bar').style.width = `${((stepIndex + 1) / 6) * 100}%`;
+
+      // Buttons
+      document.getElementById('prev-btn').disabled = (stepIndex === 0);
+      updateNextButtonState();
+
+      // Render Plan Options
+      const planContainer = document.getElementById('plan-options-container');
+      planContainer.innerHTML = '';
+      dim.options.forEach(opt => {
+        const isSelected = answers.plan[stepIndex] === opt.id;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `w-full text-left p-2.5 rounded-lg border transition text-xs flex flex-col gap-0.5 ${
+          isSelected 
+            ? 'bg-brand-900 border-brand-500 text-white shadow-sm ring-1 ring-brand-500' 
+            : 'bg-brand-950/40 border-slate-800 text-slate-300 hover:bg-slate-800/60 hover:border-slate-700'
+        }`;
+        btn.onclick = () => selectOption('plan', stepIndex, opt.id);
+        btn.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="font-bold ${isSelected ? 'text-brand-300' : 'text-slate-200'}">${opt.name}</span>
+            ${isSelected ? '<span class="text-brand-400 font-mono text-[10px]">● SELECT</span>' : ''}
+          </div>
+          <span class="text-[11px] text-slate-400 leading-tight">${opt.sub}</span>
+        `;
+        planContainer.appendChild(btn);
+      });
+
+      // Render Reality Options
+      const realityContainer = document.getElementById('reality-options-container');
+      realityContainer.innerHTML = '';
+      dim.options.forEach(opt => {
+        const isSelected = answers.reality[stepIndex] === opt.id;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `w-full text-left p-2.5 rounded-lg border transition text-xs flex flex-col gap-0.5 ${
+          isSelected 
+            ? 'bg-emerald-950/40 border-synergy-500 text-white shadow-sm ring-1 ring-synergy-500' 
+            : 'bg-brand-950/40 border-slate-800 text-slate-300 hover:bg-slate-800/60 hover:border-slate-700'
+        }`;
+        btn.onclick = () => selectOption('reality', stepIndex, opt.id);
+        btn.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="font-bold ${isSelected ? 'text-synergy-300' : 'text-slate-200'}">${opt.name}</span>
+            ${isSelected ? '<span class="text-synergy-400 font-mono text-[10px]">● SELECT</span>' : ''}
+          </div>
+          <span class="text-[11px] text-slate-400 leading-tight">${opt.sub}</span>
+        `;
+        realityContainer.appendChild(btn);
+      });
+
+      // Badges
+      const planOpt = dim.options.find(o => o.id === answers.plan[stepIndex]);
+      const realityOpt = dim.options.find(o => o.id === answers.reality[stepIndex]);
+      
+      const pBadge = document.getElementById('plan-selected-badge');
+      if (planOpt) {
+        pBadge.innerText = planOpt.name;
+        pBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-brand-900 text-brand-300 border border-brand-700';
+      } else {
+        pBadge.innerText = '未選択';
+        pBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400';
+      }
+
+      const rBadge = document.getElementById('reality-selected-badge');
+      if (realityOpt) {
+        rBadge.innerText = realityOpt.name;
+        rBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-synergy-300 border border-synergy-700';
+      } else {
+        rBadge.innerText = '未選択';
+        rBadge.className = 'text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400';
+      }
+    }
+
+    function selectOption(type, stepIndex, optionId) {
+      answers[type][stepIndex] = optionId;
+      renderStep(stepIndex);
+      
+      if (answers.plan[stepIndex] && answers.reality[stepIndex]) {
+        document.getElementById('step-hint').classList.remove('text-slate-500');
+        document.getElementById('step-hint').classList.add('text-synergy-400', 'font-medium');
+      }
+    }
+
+    function updateNextButtonState() {
+      const isComplete = answers.plan[currentStep] && answers.reality[currentStep];
+      const nextBtn = document.getElementById('next-btn');
+      nextBtn.disabled = !isComplete;
+      
+      if (currentStep === 5) {
+        nextBtn.innerText = 'シナジーレポートを生成する →';
+      } else {
+        nextBtn.innerText = '次の軸へ進む →';
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 0) {
+        renderStep(currentStep - 1);
+      }
+    }
+
+    function nextStep() {
+      if (currentStep < 5) {
+        renderStep(currentStep + 1);
+      } else {
+        generateReport();
+      }
+    }
+
+    // Load presets for recruiters
+    function loadScenario(type) {
+      if (type === 'ideal') {
+        answers.plan = ['mid', 'saas', 'backoffice', 'senior', 'mid_career', 'growth_opp'];
+        answers.reality = ['mid', 'saas', 'backoffice', 'senior', 'mid_career', 'growth_opp'];
+      } else if (type === 'saas') {
+        answers.plan = ['megaven', 'saas', 'dev', 'senior', 'mid_career', 'growth_opp'];
+        answers.reality = ['growth', 'agency', 'dev', 'lead', 'proper', 'reward'];
+      } else if (type === 'jtc') {
+        answers.plan = ['jtc', 'infra', 'backoffice', 'lead', 'mid_career', 'reward'];
+        answers.reality = ['jtc', 'infra', 'backoffice', 'junior', 'proper', 'structure_shift'];
+      } else if (type === 'ses') {
+        answers.plan = ['mid', 'saas', 'it_infra', 'senior', 'mid_career', 'growth_opp'];
+        answers.reality = ['mid', 'bpo', 'it_infra', 'junior', 'contract', 'contract_fraud'];
+      }
+      generateReport();
+    }
+
+    function restartAssessment() {
+      answers.plan = [];
+      answers.reality = [];
+      document.getElementById('result-section').classList.add('hidden');
+      document.getElementById('wizard-section').classList.remove('hidden');
+      renderStep(0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ------------------------------------------------------------------------
+    // GENERATION ENGINE & METRICS CALCULATION
+    // ------------------------------------------------------------------------
+    function generateReport() {
+      document.getElementById('wizard-section').classList.add('hidden');
+      document.getElementById('result-section').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Calculate Scores
+      const labels = [
+        "裁量・自律推進力",
+        "意思決定スピード",
+        "目標・評価の透明性",
+        "チーム支援・リソース",
+        "情報共有とオープン性"
+      ];
+
+      let planScores = [0, 0, 0, 0, 0];
+      let realityScores = [0, 0, 0, 0, 0];
+
+      for (let i = 0; i < 6; i++) {
+        const dim = DIMENSIONS[i];
+        const pOpt = dim.options.find(o => o.id === answers.plan[i]);
+        const rOpt = dim.options.find(o => o.id === answers.reality[i]);
+
+        if (pOpt) {
+          pOpt.scores.forEach((s, idx) => planScores[idx] += s);
+        }
+        if (rOpt) {
+          rOpt.scores.forEach((s, idx) => realityScores[idx] += s);
+        }
+      }
+
+      // Normalize scores out of 10
+      planScores = planScores.map(v => Math.min(10, Math.round((v / 24) * 10)));
+      realityScores = realityScores.map(v => Math.min(10, Math.round((v / 24) * 10)));
+
+      // Calculate Gaps
+      const gaps = planScores.map((p, idx) => Math.abs(p - realityScores[idx]));
+      const totalGap = gaps.reduce((a, b) => a + b, 0);
+      
+      let alignmentIndex;
+      if (totalGap === 0) {
+        alignmentIndex = 100;
+      } else {
+        alignmentIndex = Math.max(30, Math.min(95, Math.round(100 - (totalGap * 2.8))));
+      }
+
+      document.getElementById('alignment-score').innerHTML = `${alignmentIndex}<span class="text-sm text-slate-500 font-normal">%</span>`;
+
+      // 適合レベルの判定
+      const levelBadge = document.getElementById('alignment-level');
+      if (alignmentIndex >= 90) {
+        levelBadge.innerText = "ベストシナジー（強みが存分に発揮される領域）";
+        levelBadge.className = "text-[10px] text-synergy-300 font-medium";
+      } else if (alignmentIndex >= 65) {
+        levelBadge.innerText = "高ポテンシャル（対話と調整で大きく飛躍する領域）";
+        levelBadge.className = "text-[10px] text-brand-300 font-medium";
+      } else {
+        levelBadge.innerText = "相互理解フォーカス領域（前提のすり合わせで力を発揮）";
+        levelBadge.className = "text-[10px] text-slate-300 font-medium";
+      }
+
+      // Find Max Focus Index
+      let maxGapIdx = 0;
+      let maxGapVal = -1;
+      gaps.forEach((g, idx) => {
+        if (g > maxGapVal) {
+          maxGapVal = g;
+          maxGapIdx = idx;
+        }
+      });
+
+      // Render Bar Breakdown
+      const barsContainer = document.getElementById('metric-bars-container');
+      barsContainer.innerHTML = '';
+      labels.forEach((label, idx) => {
+        const p = planScores[idx];
+        const r = realityScores[idx];
+        const diff = r - p;
+        const diffText = diff > 0 ? `+${diff}` : `${diff}`;
+        const isFocus = (idx === maxGapIdx && totalGap > 0);
+
+        const row = document.createElement('div');
+        row.className = `p-2 rounded border ${isFocus ? 'bg-brand-950 border-synergy-500/50' : 'border-slate-800/80 bg-slate-900/40'}`;
+        row.innerHTML = `
+          <div class="flex justify-between items-center text-xs mb-1">
+            <span class="font-medium text-slate-300 flex items-center gap-1.5">
+              ${isFocus ? '<span class="text-synergy-300 font-mono text-[10px]">★ 重点対話テーマ</span>' : ''}
+              ${label}
+            </span>
+            <span class="font-mono text-[11px] text-slate-400">
+              ${diff === 0 ? '完全一致' : `差分: ${diffText} pt`}
+            </span>
+          </div>
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-[9px] font-mono text-brand-400 w-10">理想 ${p}</span>
+              <div class="flex-grow bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-brand-400 h-full rounded-full" style="width: ${p * 10}%"></div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[9px] font-mono text-synergy-300 w-10">実態 ${r}</span>
+              <div class="flex-grow bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-synergy-400 h-full rounded-full" style="width: ${r * 10}%"></div>
+              </div>
+            </div>
+          </div>
+        `;
+        barsContainer.appendChild(row);
+      });
+
+      // Render Radar Chart
+      renderRadar(labels, planScores, realityScores);
+
+      // Render Dynamic Texts based on chosen values & gap
+      renderTailoredContent(maxGapIdx, totalGap, answers);
+    }
+
+    function renderRadar(labels, planScores, realityScores) {
+      const ctx = document.getElementById('gapRadarChart').getContext('2d');
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+
+      chartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: '理想 (Plan)',
+              data: planScores,
+              borderColor: '#3b82f6',
+              backgroundColor: 'rgba(59, 130, 246, 0.15)',
+              borderWidth: 2,
+              borderDash: [4, 4],
+              pointBackgroundColor: '#3b82f6',
+              pointRadius: 3
+            },
+            {
+              label: '実態 (Reality)',
+              data: realityScores,
+              borderColor: '#10b981',
+              backgroundColor: 'rgba(16, 185, 129, 0.2)',
+              borderWidth: 2,
+              pointBackgroundColor: '#10b981',
+              pointRadius: 4
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              angleLines: { color: 'rgba(51, 65, 85, 0.5)' },
+              grid: { color: 'rgba(51, 65, 85, 0.5)' },
+              pointLabels: {
+                color: '#cbd5e1',
+                font: { size: 10, family: "'Noto Sans JP', sans-serif" }
+              },
+              ticks: {
+                display: false,
+                stepSize: 2,
+                max: 10,
+                min: 0
+              }
+            }
+          },
+          plugins: {
+            legend: { display: false }
+          }
+        }
+      });
+    }
+
+    function renderTailoredContent(maxGapIdx, totalGap, answers) {
+      const pOrg = DIMENSIONS[0].options.find(o => o.id === answers.plan[0]);
+      const rOrg = DIMENSIONS[0].options.find(o => o.id === answers.reality[0]);
+      const pFlow = DIMENSIONS[1].options.find(o => o.id === answers.plan[1]);
+      const rFlow = DIMENSIONS[1].options.find(o => o.id === answers.reality[1]);
+      const trigger = DIMENSIONS[5].options.find(o => o.id === answers.reality[5]);
+
+      const maxFocusNames = [
+        "裁量と自律性の発揮バランス",
+        "合意形成とスピード感の調和",
+        "目標設定とフィードバックの透明性",
+        "チーム連携とリソース配分の最適化",
+        "情報共有のスピードとオープン性"
+      ];
+
+      // 完全一致（totalGap === 0）の場合
+      if (totalGap === 0) {
+        document.getElementById('summary-headline').innerText = 
+          `【ベストシナジー】${pOrg.name}における理想的な活躍アライメント`;
+
+        document.getElementById('summary-lead').innerText = 
+          `自身が最も力を発揮しやすい理想的なワークスタイルと、現場で実践される組織力学が高いレベルで調和しています。共通認識のもとで自律性とチームワークがシナジーを生み、持てるポテンシャルを存分に発揮できる理想的な就業環境です。`;
+
+        document.getElementById('structural-analysis-text-1').innerText = 
+          `【${pOrg.name}】における【${pFlow.name}】の特性が、自身の推進アプローチと極めて自然にフィットしています。役割の主権と責任範囲がクリアに共有されており、前向きなチャレンジが組織の成果に直結しやすい構造です。`;
+
+        document.getElementById('structural-analysis-text-2').innerText = 
+          `大切にされている【${trigger.name}】がしっかりと満たされる環境です。組織の目指すビジョンと個人の成長ベクトルが一致しており、長期的に高いエンゲージメントを保ちながら貢献できる状態が整っています。`;
+
+      } else {
+        // 差分がある場合（ポジティブな対話テーマとして表現）
+        document.getElementById('summary-headline').innerText = 
+          `${pOrg.name}の持ち味と${rOrg.name}の特性を結ぶ「${maxFocusNames[maxGapIdx]}」の共創`;
+
+        document.getElementById('summary-lead').innerText = 
+          `個人の強みである「自律的な推進力」と、組織が持つ「強固な合意形成プロセス」の組み合わせにより、さらなるシナジーを生み出せるポテンシャルが示されています。事前の対話を通じて期待値をすり合わせることで、組織に新しい風を吹き込むキーパーソンとしての活躍が期待できます。`;
+
+        document.getElementById('structural-analysis-text-1').innerText = 
+          `【${pOrg.name}】のスピード感や自律性を大切にしながら、【${rOrg.name}】特有の丁寧な合意形成や【${rFlow.name}】の特性を活かしていくことで、独創性と組織力の両立が可能です。個人の自走力と組織の安定基盤が相互補完する好機といえます。`;
+
+        document.getElementById('structural-analysis-text-2').innerText = 
+          `重視される【${trigger.name}】について、選考や面談を通じて率直に対話を深めることで、チーム全体にとってもより働きやすく成果の出やすい体制づくりへと貢献できる建設的な視点を持っています。`;
+      }
+
+      // Recommended vs Alignment Focus
+      const recList = document.getElementById('recommended-fit-list');
+      recList.innerHTML = `
+        <li class="flex items-start gap-2">
+          <span class="text-synergy-300 font-bold">•</span>
+          <div>
+            <strong>強みを発揮しやすい組織:</strong> 中堅企業（基盤安定型）または自社プロダクト/自社事業型企業。
+            <p class="text-slate-400 text-[11px] mt-0.5">自発的な改善提案が歓迎され、意思決定と実行のサイクルを主体的に回しやすい環境。</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-synergy-300 font-bold">•</span>
+          <div>
+            <strong>相性の良いチーム文化:</strong> ミッションと役割が明確で、相互リスペクトに基づくチーム体制。
+            <p class="text-slate-400 text-[11px] mt-0.5">自走力を活かした業務推進がチームの力強いサポートとなり、互いに高め合える関係性を築けます。</p>
+          </div>
+        </li>
+      `;
+
+      const excList = document.getElementById('exclusion-fit-list');
+      excList.innerHTML = `
+        <li class="flex items-start gap-2">
+          <span class="text-brand-300 font-bold">•</span>
+          <div>
+            <strong>丁寧なすり合わせが有効な環境:</strong> 多層的なパートナーシップや受託ソリューション型組織。
+            <p class="text-slate-400 text-[11px] mt-0.5">クライアントや関係各所との合意形成ルールを事前に確認しておくことで、持ち前の調整力をスムーズに発揮できます。</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-brand-300 font-bold">•</span>
+          <div>
+            <strong>確認しておくと安心なガバナンス:</strong> 意思決定フローが急速に変化している成長フェーズ組織。
+            <p class="text-slate-400 text-[11px] mt-0.5">オンボーディング体制や現在の優先度を共有し合うことで、入社直後から迷わずミッションに集中できます。</p>
+          </div>
+        </li>
+      `;
+
+      // Mutual Understanding Checklist
+      const ddContainer = document.getElementById('dd-checklist-container');
+      ddContainer.innerHTML = `
+        <div class="p-2.5 rounded bg-brand-950/60 border border-slate-800 text-xs">
+          <span class="text-brand-300 font-bold block mb-1">① 意思決定のスピードとチームの推進スタイル</span>
+          <p class="text-slate-400 text-[11px]">現場主導で改善を進められる範囲や、アイデアを形にするまでのコミュニケーションの風通し。</p>
+        </div>
+        <div class="p-2.5 rounded bg-brand-950/60 border border-slate-800 text-xs">
+          <span class="text-brand-300 font-bold block mb-1">② 事業の強みと大切にしている顧客価値</span>
+          <p class="text-slate-400 text-[11px]">自社プロダクトや直接取引におけるこだわり、組織が最も誇りにしている提供価値の理解。</p>
+        </div>
+        <div class="p-2.5 rounded bg-brand-950/60 border border-slate-800 text-xs">
+          <span class="text-brand-300 font-bold block mb-1">③ キャリア採用メンバーの活躍事例とカルチャー</span>
+          <p class="text-slate-400 text-[11px]">多様なバックグラウンドを持つメンバーがどのように個性を発揮し、定着・活躍しているかのストーリー。</p>
+        </div>
+        <div class="p-2.5 rounded bg-brand-950/60 border border-slate-800 text-xs">
+          <span class="text-brand-300 font-bold block mb-1">④ 成長を後押しするフィードバックと対話の機会</span>
+          <p class="text-slate-400 text-[11px]">1on1や定期的な振り返りなど、互いの期待値を確認し合い前向きに成長できる仕組みの運用。</p>
+        </div>
+      `;
+
+      // Constructive Questions Script
+      const rqContainer = document.getElementById('reverse-questions-container');
+      rqContainer.innerHTML = `
+        <div class="p-3 rounded-lg bg-brand-950 border border-brand-800/60 text-xs">
+          <div class="flex items-center justify-between text-synergy-300 font-bold mb-1">
+            <span>Theme 01: 活躍に向けた役割と期待値の共有</span>
+            <span class="text-[10px] font-mono text-slate-500">役割アライメント</span>
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            「今回募集されているポジションで、現在最も周囲から信頼され活躍されている方は、どのようなスタンスや工夫でチームに貢献されていますでしょうか？」
+          </p>
+        </div>
+
+        <div class="p-3 rounded-lg bg-brand-950 border border-brand-800/60 text-xs">
+          <div class="flex items-center justify-between text-synergy-300 font-bold mb-1">
+            <span>Theme 02: チームでのアイデア具現化と推進プロセス</span>
+            <span class="text-[10px] font-mono text-slate-500">推進スタイル</span>
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            「現場から新しい改善提案やアイデアが出た際、チームや他部門とどのように対話を重ねて具現化されていくのか、具体的なエピソードがあれば伺えますでしょうか？」
+          </p>
+        </div>
+
+        <div class="p-3 rounded-lg bg-brand-950 border border-brand-800/60 text-xs">
+          <div class="flex items-center justify-between text-synergy-300 font-bold mb-1">
+            <span>Theme 03: 変化を前向きに楽しむチームカルチャー</span>
+            <span class="text-[10px] font-mono text-slate-500">カルチャーフィット</span>
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            「事業や環境がスピーディーに変化していく中で、チームとして大切にされている価値観や、互いに支え合うための取り組みについて教えていただけますでしょうか？」
+          </p>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
